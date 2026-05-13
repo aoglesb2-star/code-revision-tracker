@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: code-revision-tracker
+    env: python
+    buildCommand: pip install -r requirements.txt
+    # 5-minute timeout: large municipal codes + Opus 4.7 + 16k output tokens
+    # can run 2-4 minutes end to end.
+    startCommand: gunicorn app:app --timeout 300 --workers 1
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: APP_PASSWORD
+        sync: false
