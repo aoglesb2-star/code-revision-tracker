@@ -141,7 +141,7 @@ def run_comparison(old_text, new_text):
         try:
             logger.info("Anthropic API call attempt %d/%d", attempt, max_attempts)
             message = client.messages.create(
-                model="claude-opus-4-7",
+                model="claude-sonnet-4-6",
                 max_tokens=16000,
                 system=SYSTEM_PROMPT,
                 messages=[user_message],
